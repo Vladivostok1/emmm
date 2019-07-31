@@ -18,6 +18,7 @@
     height: 1.62rem;
     display: block;
     padding:10px 0px;
+    color:#fff;
 }
 .page .new-icon{
     display: block;
@@ -54,8 +55,7 @@
     padding: .28rem .2rem .2rem 0;
     border-bottom: 1px solid #DDD8CE;
 }
-.like-list{
-    border-bottom: 1px solid #DDD8CE;
+.like-list{  
     overflow: hidden;
     position: relative;
 }
@@ -70,6 +70,7 @@
     padding: .14rem .2rem .14rem 0;
     display: flex;
     color: #333333;
+    border-bottom: 1px solid #DDD8CE;
 }
 .like-right{
     flex: 1;
@@ -101,9 +102,7 @@
     font-size:0.24rem;
 }
 .price .yi-sale{
-    position: absolute;
-    right: 0.2rem;
-    top:1.65rem;
+   float: right;
     font-size: .24rem;
     color: #666;
 }
