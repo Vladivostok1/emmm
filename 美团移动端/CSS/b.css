@@ -1,0 +1,109 @@
+/*  --------------------- */
+.page{
+    height: 3.3rem;
+    width: 7.5rem;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+
+}
+.page .icon{
+    /* background: #ff0000; */
+    width: 1.5rem;
+    height: 1.62rem;
+    text-align: center;
+}
+.page .icon a{
+    width: 1.5rem;
+    height: 1.62rem;
+    display: block;
+    padding:10px 0px;
+}
+.page .new-icon{
+    display: block;
+    margin:auto;
+    height: 0.8rem;
+    width: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+    background: #fd9d21;
+    border-radius: 50%;
+    margin-bottom: .14rem;
+}
+.page .icon-zi{
+    text-align: center;
+    font-size: .24rem;
+    color: #666;
+}
+.page::after{
+    content: "";
+    width: 100%;
+    height: 10px;
+    background: #eee;
+}
+
+/* ---------------------------- */
+.like{
+    padding:0 0 0 10px;
+    /* width: 7.3rem;
+    height: 2.04rem; */
+}
+.like .like-one{
+    font-size: .34rem;
+    color: #333;
+    padding: .28rem .2rem .2rem 0;
+    border-bottom: 1px solid #DDD8CE;
+}
+.like-list{
+    border-bottom: 1px solid #DDD8CE;
+    overflow: hidden;
+    position: relative;
+}
+.like-list img{
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-top:0.1rem;
+}
+.like-list a{
+    display: block;
+    height: 100%;
+    padding: .14rem .2rem .14rem 0;
+    display: flex;
+    color: #333333;
+}
+.like-right{
+    flex: 1;
+    margin-left: 0.2rem;
+}
+.like-right .big-title{
+    padding-top: .1rem; 
+    margin-bottom: .12rem;
+    font-size: .3rem;
+}
+.like-right .small-title{
+    font-size: .24rem;
+    height: .68rem;
+    margin-bottom: .16rem;
+}
+.price .strong{
+    font-size: 0.38rem;
+    color: #06c1ae;
+}
+.price .strong-yuan{
+    font-size: 0.26rem;
+    color: #06c1ae;
+}
+.price .menshi::before{
+    content: "门市价:";
+    font-size:0.24rem;
+}
+.price .menshi{
+    font-size:0.24rem;
+}
+.price .yi-sale{
+    position: absolute;
+    right: 0.2rem;
+    top:1.65rem;
+    font-size: .24rem;
+    color: #666;
+}
