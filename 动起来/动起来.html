@@ -13,10 +13,16 @@
 
 <body>
     <div id="container">
-
+        <div id="prev">&lt</div>
+        <div id="next">&gt</div>
     </div>
     <script>
-
+        var oCon = document.getElementById("container");
+        var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var oNext = document.getElementById('next');
+        var oPrev = document.getElementById('prev');
+        var aSpan = oCon.getElementsByTagName('span');
         var count = 0;
         for (var i = 0; i < 24; i++) {
             var oImg = new Image();
@@ -34,8 +40,100 @@
             }
             oImg.src = "img/" + (i + 1) + ".jpg";
         }
-        function loadSucess(){
-            
+
+        function loadSucess() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 6; j++) {
+                    var oDiv = document.createElement("div");
+                    oDiv.i = i;
+                    oDiv.j = j;
+                    oDiv.index = i * 6 + j;
+                    oDiv.onclick = fn;
+                    oDiv.style.background = "url(img/thumbs/" + (i * 6 + j + 1) + ".jpg)";
+                    oDiv.innerHTML = "<span></span>";
+                    oDiv.className = "box";
+                    oCon.appendChild(oDiv);
+                }
+            }
+
+
+            var oBox = document.getElementsByClassName("box");
+
+            var disX = (screenWidth - 135 * 6) / 7;
+            var disY = (screenHeight - 135 * 4) / 5;
+            setTimeout(() => {
+                for (var i = 0; i < 24; i++) {
+                    oBox[i].style.transitionDelay = (oBox.length - i) * 100 + "ms";
+                    oBox[i].style.transform = 'rotate(' + (Math.random() - 0.5) * 40 + 'deg)';
+
+                    oBox[i].style.left = (oBox[i].j + 1) * disX + oBox[i].j * 135 + "px";
+                    oBox[i].style.top = (oBox[i].i + 1) * disY + oBox[i].i * 135 + "px";
+                }
+
+            }, 0);
+
+            var bigDisX = (screenWidth - 127 * 6) / 2;
+            var bigDisY = (screenHeight - 127 * 4) / 2;
+            var flag = true;
+            now = 0;
+            function fn() {
+                if (flag) {
+                    for (var i = 0; i < 24; i++) {
+                        oBox[i].style.transitionDelay = "0ms";
+                        oBox[i].style.left = oBox[i].j * 127 + bigDisX + "px";
+                        oBox[i].style.top = oBox[i].i * 127 + bigDisY + "px";
+                        oBox[i].style.transform = 'rotate(0deg)';
+                        oBox[i].style.borderWidth = "1px";
+                        now = this.index + 1;
+                        var oSpan = oBox[i].getElementsByTagName("span")[0];
+                        var x = -oBox[i].j * 125;
+                        var y = -oBox[i].i * 125;
+                        oSpan.style.opacity = 1;
+                        // oSpan.style.background = 'url(img/' + (this.index + 1) + '.jpg)' + x + 'px' + y + 'px no-repeat';
+                        oSpan.style.background = "url(img/" + (this.index + 1) + ".jpg) " + x + "px " + y + "px no-repeat";
+                        oNext.style.display = "block";
+                        oPrev.style.display = "block";
+                    }
+                }
+                else {
+                    setTimeout(() => {
+                        for (var i = 0; i < 24; i++) {
+                            oBox[i].style.transitionDelay = "0ms";
+                            oBox[i].style.transform = 'rotate(' + (Math.random() - 0.5) * 40 + 'deg)';
+
+                            oBox[i].style.left = (oBox[i].j + 1) * disX + oBox[i].j * 135 + "px";
+                            oBox[i].style.top = (oBox[i].i + 1) * disY + oBox[i].i * 135 + "px";
+                            var oSpan = oBox[i].getElementsByTagName('span')[0];
+                            oSpan.style.opacity = 0;
+                            oNext.style.display = "none";
+                            oPrev.style.display = "none";
+                        }
+                    }, 0);
+                }
+                flag = !flag;
+            }
+        }
+        oNext.onclick = function () {
+            now++;
+            if (now == 25) {
+                now = 1;
+            }
+            for (var i = 0; i < aSpan.length; i++) {
+                aSpan[i].style.transitionDelay = Math.random() * 750 + "ms";
+                aSpan[i].style.backgroundImage = "url(img/" + (now) + ".jpg)";
+            }
+
+        }
+        oPrev.onclick = function () {
+            now--;
+            if (now == 0) {
+                now = 24;
+            }
+            for (var i = 0; i < aSpan.length; i++) {
+                aSpan[i].style.transitionDelay = Math.random() * 750 + "ms";
+                aSpan[i].style.backgroundImage = "url(img/" + (now) + ".jpg)";
+            }
+
         }
     </script>
 </body>
