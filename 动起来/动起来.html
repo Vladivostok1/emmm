@@ -55,8 +55,6 @@
                     oCon.appendChild(oDiv);
                 }
             }
-
-
             var oBox = document.getElementsByClassName("box");
 
             var disX = (screenWidth - 135 * 6) / 7;
@@ -69,9 +67,7 @@
                     oBox[i].style.left = (oBox[i].j + 1) * disX + oBox[i].j * 135 + "px";
                     oBox[i].style.top = (oBox[i].i + 1) * disY + oBox[i].i * 135 + "px";
                 }
-
             }, 0);
-
             var bigDisX = (screenWidth - 127 * 6) / 2;
             var bigDisY = (screenHeight - 127 * 4) / 2;
             var flag = true;
@@ -122,7 +118,6 @@
                 aSpan[i].style.transitionDelay = Math.random() * 750 + "ms";
                 aSpan[i].style.backgroundImage = "url(img/" + (now) + ".jpg)";
             }
-
         }
         oPrev.onclick = function () {
             now--;
@@ -133,7 +128,6 @@
                 aSpan[i].style.transitionDelay = Math.random() * 750 + "ms";
                 aSpan[i].style.backgroundImage = "url(img/" + (now) + ".jpg)";
             }
-
         }
     </script>
 </body>
