@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #container {
+            width: 200px;
+            border: 1px solid #000;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h2 {
+            background: #000000;
+            color: #fff;
+        }
+
+        #container ul {
+            display: none;
+        }
+
+        #container .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="container">
+        <li>
+            <h2>管理区</h2>
+            <ul>
+                <li>1111</li>
+                <li>2222</li>
+                <li>3333</li>
+            </ul>
+        </li>
+        <li>
+            <h2>交流区</h2>
+            <ul>
+                <li>1111</li>
+                <li>2222</li>
+                <li>3333</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $('h2').each(function () {
+            $(this).attr('flag', false);
+        });
+        $('h2').on('click', function () {
+            // console.log($(this).attr('flag'));
+            console.log($(this).find('ul'));
+            if ($(this).attr('flag') == 'false') {
+                $(this).next().css('display', 'block');
+                $(this).attr('flag', true);
+                // console.log($(this).attr('flag'));
+            }
+            else {
+                $(this).next().css('display', 'none');
+                $(this).attr('flag', false);
+                // console.log("haha");
+            }
+        }) 
+        // $('h2').on('click', function () {
+        //         $(this).next().toggleClass('show');
+        // })
+    </script>
+</body>
+
+</html>
