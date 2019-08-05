@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+
+        ul {
+            list-style: none;
+            /* display: flex; */
+            position: relative;
+        }
+
+        #UL li {
+            float: left;
+        }
+
+        img {
+            width: 1.87rem;
+            height: 2rem;
+        }
+
+        .haha {
+            position: absolute;
+            top: 4rem;
+            width: 7.5rem;
+            height: 5rem;
+        }
+        .haha-2{
+            display: none;
+        }
+    </style>
+    <script src="rem.js"></script>
+    <script src="zepto.js"></script>
+    <script src="touch.js"></script>
+    <script src="../JQuery/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <ul id="UL">
+        <li class="li-img"><img src="img/1.jpg" alt=""></li>
+        <li class="li-img"><img src="img/2.jpg" alt=""></li>
+        <li class="li-img"><img src="img/3.jpg" alt=""></li>
+        <li class="li-img"><img src="img/4.jpg" alt=""></li>
+        <li class="li-img"><img src="img/5.jpg" alt=""></li>
+        <li class="li-img"><img src="img/6.jpg" alt=""></li>
+        <li class="li-img"><img src="img/7.jpg" alt=""></li>
+        <li class="li-img"><img src="img/8.jpg" alt=""></li>
+        <li class="li-img"><img src="img/9.jpg" alt=""></li>
+        <li class="li-img"><img src="img/10.jpg" alt=""></li>
+        <li class="li-img"><img src="img/11.jpg" alt=""></li>
+        <li class="li-img"><img src="img/12.jpg" alt=""></li>
+        <li class="li-img"><img src="img/13.jpg" alt=""></li>
+        <li class="li-img"><img src="img/14.jpg" alt=""></li>
+        <li class="li-img"><img src="img/15.jpg" alt=""></li>
+        <li class="li-img"><img src="img/16.jpg" alt=""></li>
+        <li class="li-img"><img src="img/17.jpg" alt=""></li>
+        <li class="li-img"><img src="img/18.jpg" alt=""></li>
+        <li class="li-img"><img src="img/19.jpg" alt=""></li>
+        <li class="li-img"><img src="img/20.jpg" alt=""></li>
+        <li class="li-img"><img src="img/21.jpg" alt=""></li>
+        <li class="li-img"><img src="img/22.jpg" alt=""></li>
+        <li class="li-img"><img src="img/23.jpg" alt=""></li>
+        <li class="li-img"><img src="img/24.jpg" alt=""></li>
+    </ul>
+    <script>
+        var index;
+        $('UL li').on('click', function () {
+            $(this).find('img').toggleClass("haha");
+            $(this).siblings().toggleClass("haha-2");
+            index = $(this).index();
+        })
+        $('.li-img').on('swipeLeft',function(){
+            $('.li-img').eq(index).removeClass("haha").eq(index+1).addClass("haha");
+        })
+    </script>
+</body>
+
+</html>
