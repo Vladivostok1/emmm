@@ -190,7 +190,10 @@
 	color:#fff;
 	font-size:12px;
 	text-indent:13px;
-	background-color:#6E6E6E;
+	
+}
+.goudongxi{
+    background-color:#6E6E6E;
 }
 .jnCatainfo{
     border: 1px solid #6E6E6E;
