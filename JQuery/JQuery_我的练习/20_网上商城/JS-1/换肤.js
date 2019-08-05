@@ -6,7 +6,7 @@ $(function () {
         $('#jnCatalog h2').attr('class', 'new new_skin_' + index);
         $('#jnCatalog h2').css('opacity', '0.5');
         setCookie('skin', index, 10);
-    })
+    });
     var index = getCookie('skin');
     $('#skin li').eq(index).triggerHandler('click');
 
@@ -32,4 +32,4 @@ $(function () {
         }
         return "";
     }
-})
+});
