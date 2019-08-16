@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var index =0
+        // var url= "url(img/"+(index+1)+".jpg)";
+        
+
+        let url = `url(img/${index+1}.jpg)`;
+
+        console.log(url);
+
+        // $('#div1').css('background-image',url);
+
+
+        let a = 3;
+        let b = 4;
+        // 3+4的结果是7
+        console.log( a+"+"+b+"的结果是"+(a+b));
+
+        console.log( `${a}+${b}的结果是${a+b}`);
+
+
+
+        let  str = "abcdefg";
+
+        // str.indexOf(c)
+
+        console.log(str.includes('c'));
+
+        let str2 = 'abcdef';
+
+       console.log( str2.startsWith('bjhgj')  );
+
+       
+
+        console.log( str2.padStart(20,'xyz'))
+        console.log( str2.repeat(5));
+        
+        console.log( Number.isFinite('abs'))
+        
+       console.log(Math.sign(0));
+
+    </script>
+    
+</body>
+</html>

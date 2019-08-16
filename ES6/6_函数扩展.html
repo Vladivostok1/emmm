@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <ul>
+
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+<body>
+    <script>
+
+        var a = function () {
+            console.log(this);
+            console.log('hahah')
+        }
+
+        a();
+        // // 箭头函数
+        // var b = (x,y) =>{
+        //     console.log(x,y);
+        // }
+        // b(1,2);
+
+        // var aLi = document.getElementsByTagName('li');
+        // for(var i=0; i<aLi.length; i++){
+        //     aLi[i].onclick = function(){
+        //         // console.log();
+        //         setTimeout(function(){
+        //             console.log(this);
+        //         }.bind(this),1000);
+        //     }
+        // }
+
+        //this指向声明时的this(父作用域的this)  普通函数中this调用时的this
+        // var aLi = document.getElementsByTagName('li');
+        // for(var i=0; i<aLi.length; i++){
+        //     aLi[i].onclick = function(){
+        //         setTimeout(()=>{
+        //             console.log(this);
+        //         },1000);
+        //     }
+        // }
+
+
+        // var obj = {
+        //     name:'zs',
+        //     say:function(){
+        //         setTimeout(()=>{
+        //             console.log(this);
+        //         },1000)
+        //     }
+        // }
+
+        // obj.say();//window
+
+        // 2 箭头函数中不能使用arguments   可以使用...rest
+        let fn = (...rest) => {
+
+            console.log(rest);
+        }
+
+
+        fn(1,2,3,4);
+        // 3箭头函数不能使用new  
+
+        
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
