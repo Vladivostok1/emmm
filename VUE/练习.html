@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <input type="text" v-model="msg" placeholder="please input" @keyup="filter()">
+        <button @click="add()">add</button>
+        <ul>
+            <li v-for="(obj,index) in list" @click="change(obj)" :class="{red:obj.isRed}" v-show="obj.isShow">
+                {{obj.value}}<button @click="del(index)">del</button></li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#div1",
+            data: {
+                msg: "",
+                list: [
+                    {
+                        value: 'aaa',
+                        isRed: false,
+                        isShow: true,
+                    }, {
+                        value: 'bbb',
+                        isRed: false,
+                        isShow: true,
+                    }
+                ],
+            },
+            methods: {
+                add() {
+                    if (this.msg == "")
+                        alert("please input")
+                    else {
+                        this.list.push({ value: this.msg, isRed: false, isShow: true });
+                        this.msg = "";
+                        this.list.forEach(function (obj, index){
+                            obj.isShow = true;
+                        });
+                    }
+
+                },
+                change(obj) {
+                    obj.isRed = !obj.isRed;
+                },
+                del(index) {
+                    this.list.splice(index, 1);
+                },
+                filter() {
+                    let value = this.msg;
+                    this.list.forEach(function (obj, index) {
+                        if (obj.value.includes(value))
+                            obj.isShow = true;
+                        else obj.isShow = false;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

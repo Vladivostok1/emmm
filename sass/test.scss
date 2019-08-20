@@ -1,0 +1,39 @@
+@import "common.scss";
+$color:orange;
+body{
+    background: $color;
+    color: green;
+    .arrow{
+       @include arrow(10px,#000,bottom); 
+    }
+    li{
+        background: green;
+        height: 20px;
+        color: #ffffff;
+        padding:{
+            top:2px;
+            left: 2px;
+        }
+        &:hover{
+            color: #0000ff;
+        }
+    }
+    h2{
+        @include wh(200px,100px);
+    }
+    h5{
+        @extend h2;
+        color: #000;
+    }
+    @for $i from 1 to 5{
+        .item-#{$i}{
+            @include wh(500px,100px);
+        }
+    }
+    $list: s1 s2 s3;
+    @each $j in $list{
+        .#{$j}{
+            background: url(#{$j}.jpg);
+        }
+    }
+}

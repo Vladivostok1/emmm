@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+@mixin arrow($size:5px,$color:#000,$dir:bottom){
+    width: 0;
+    height: 0;
+    border:$size solid transparent;
+    @if($dir == "bottom"){
+        border-top-color: $color;
+    }
+    @if($dir == "top"){
+        border-bottom-color: $color;
+    }    
+}
+@mixin wh($w,$h){
+    width: $w;
+    height: $h;
+}

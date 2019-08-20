@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: orange;
+  color: green;
+}
+body .arrow {
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #000;
+}
+body li {
+  background: green;
+  height: 20px;
+  color: #ffffff;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+body li:hover {
+  color: #0000ff;
+}
+body h2, body h5 {
+  width: 200px;
+  height: 100px;
+}
+body h5 {
+  color: #000;
+}
+body .item-1 {
+  width: 500px;
+  height: 100px;
+}
+body .item-2 {
+  width: 500px;
+  height: 100px;
+}
+body .item-3 {
+  width: 500px;
+  height: 100px;
+}
+body .item-4 {
+  width: 500px;
+  height: 100px;
+}
+body .s1 {
+  background: url(s1.jpg);
+}
+body .s2 {
+  background: url(s2.jpg);
+}
+body .s3 {
+  background: url(s3.jpg);
+}
+
+/*# sourceMappingURL=test.css.map */

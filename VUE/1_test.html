@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+        {{msg}}
+    </div>
+    <div id="div2">
+        <ul>
+            <li v-for="obj in studentList">{{obj.name}} | {{obj.age}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#div1",
+            data: {
+                msg: 'Hello world',
+                number: 10
+            }
+        });
+        let vm2 = new Vue({
+            el: "#div2",
+            data: {
+                studentList: [
+                    { name: 'zs', age: 20 },
+                    { name: 'lisi', age: 18 }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

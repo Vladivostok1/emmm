@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+        是否需要额外付费设施
+        <input type="checkbox" @click = "fn()" v-model = "isShow">
+        <ul>
+            <li v-show = "isShow" v-for = "(obj,index) in list">
+                {{obj.name}} ({{obj.price}})
+                <input type="checkbox" :value="obj" v-model="totalList">
+            </li>
+        </ul>
+        <p>订单费用信息</p>
+        <ul>
+            <li v-for = "(obj,index) in totalList">
+                {{obj.name}} ({{obj.price}})
+            </li>
+        </ul>
+        <p>总金额：{{total}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#div1",
+            data: {
+                list: [
+                    {
+                        name: '沙发',
+                        price: 100
+                    },
+                    {
+                        name: 'WIFI',
+                        price: 50
+                    },
+                    {
+                        name: '电脑',
+                        price: 200
+                    }
+                ],
+                totalList: [{ name: "群力花园豪华型", price: 400 },],
+                isShow:false,
+            },
+            methods: {
+                fn(){
+                    this.totalList.splice(1);
+                },
+            },
+            computed:{
+                total(){
+                    let sum = 0;
+                    this.totalList.forEach(function(obj) {
+                        sum+=obj.price;
+                    });
+                    return sum;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
