@@ -7,6 +7,7 @@
       class="router_link"
       :to="obj.path"
     >{{obj.title}}</router-link>
+    <!--native 给组件绑定事件  -->
   </div>
 </template>
 

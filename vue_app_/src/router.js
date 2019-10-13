@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Movie from './views/Movie.vue';
+import movie_Details from './views/movie_Details.vue';
 import Music from './views/Music.vue';
 import Book from './views/Book.vue';
 import Picture from './views/Picture.vue';
@@ -17,19 +18,24 @@ export default new Router({
       component: Movie,
     },
     {
-      path:'/music',
-      name:'music',
-      component:Music
-    } ,
+      path: '/movie/movie_Details',
+      name: 'movie_Details',
+      component: movie_Details
+    },
     {
-      path:'/book',
-      name:'book',
-      component:Book
-    } ,
+      path: '/music',
+      name: 'music',
+      component: Music
+    },
     {
-      path:'/picture',
-      name:'picture',
-      component:Picture
+      path: '/book',
+      name: 'book',
+      component: Book
+    },
+    {
+      path: '/picture',
+      name: 'picture',
+      component: Picture
     }
   ],
 });
