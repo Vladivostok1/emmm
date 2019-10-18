@@ -42,10 +42,10 @@ export default {
         this.flag = false;
         axios
           .get(
-            // "https://bird.ioliu.cn/v1?url=https://douban.uieee.com/v2/movie/in_theaters?start=" +
-            //   num +
-            //   "&count=10"
-            "/data/movie" + num + ".json"
+            "https://bird.ioliu.cn/v1?url=https://douban.uieee.com/v2/movie/in_theaters?start=" +
+              num +
+              "&count=10"
+            // "/data/movie" + num + ".json"
           )
           .then(res => {
             this.isShow = false;
@@ -63,7 +63,7 @@ export default {
       }
     },
     goDetail(id){
-      this.$router.push({path:'/movie/movie_Details',query:{id:id}});
+      this.$router.push({path:'/music/music_Details',query:{id:id}});
     }
   },
   created() {
