@@ -6,6 +6,7 @@ import Music from './views/Music.vue';
 import music_Details from './views/music_Details.vue';
 import Book from './views/Book.vue';
 import Picture from './views/Picture.vue';
+import photo_Details from './views/photo_Details.vue';
 
 Vue.use(Router);
 
@@ -42,6 +43,6 @@ export default new Router({
       path: '/picture',
       name: 'picture',
       component: Picture
-    }
+    },
   ],
 });

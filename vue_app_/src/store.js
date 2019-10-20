@@ -13,7 +13,6 @@ export default new Vuex.Store({
       state.title = title;
       state.color = color;
     },
-
   },
   actions: {
 

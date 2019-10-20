@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+       class Welcome extends React.Component{
+           render(){
+               return(
+                    <div>
+                        <h2>{this.props.name}</h2>
+                        <h3>hahaha {this.props.content}</h3>
+                        {this.props.children}//children
+                    </div>
+               )
+           }
+       }
+       ReactDOM.render(
+           <Welcome name = "张三" content = "fkjaifjasjf">
+            <h3>fjafjasjfjasfdjalsjfjsafjsajflasjfjsdlfjslfjasl</h3>
+           </Welcome>,
+           document.getElementById('root')
+       )
+    </script>
+</body>
+
+</html>

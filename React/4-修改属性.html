@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+       class Welcome extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    num:10
+                }
+                this.addBandle = this.addBandle.bind(this);//第一种
+            }
+            addBandle(){
+                this.setState({
+                    num:this.state.num+1,
+                });
+            }
+            render(){
+                return(
+                    <div>
+                        <h2>{this.state.num}</h2>
+                        <button onClick = {this.addBandle}>add</button>
+                        <button onClick = {//第二种
+                            ()=>{
+                                this.addBandle()
+                            }
+                        }>add</button>
+                    </div>
+                )
+            }
+       }
+      ReactDOM.render(
+          <Welcome></Welcome>,
+          document.getElementById('root')
+      )
+    </script>
+</body>
+
+</html>
