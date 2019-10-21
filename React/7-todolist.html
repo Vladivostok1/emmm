@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            background: #f00;
+        }
+        .aa{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type = "text/babel">
+        class Main extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    list:[
+                        {id:1,action:"吃饭",flag:false,isShow:true},
+                        {id:2,action:"睡觉",flag:false,isShow:true},
+                        {id:3,action:"豆以个豆",flag:false,isShow:true}
+                    ]
+                }
+                this.addList = this.addList.bind(this);
+                this.del = this.del.bind(this);
+                this.changeFlag = this.changeFlag.bind(this);
+                this.search = this.search.bind(this);
+            }
+            search(val){
+                let m = this.state.list;
+                if(val == ""){
+                    m.forEach((obj,index) => {
+                        obj.isShow = true;
+                    });
+                    this.setState({
+                        list:m
+                    })
+                }else{
+                   m.forEach((obj,index) => {
+                        if(obj.action.includes(val))
+                            obj.isShow = true;
+                        else{
+                            obj.isShow = false;
+                        }
+                    });
+                    this.setState({
+                        list:m
+                    })
+                }
+            }
+            addList(val){
+                let a = Math.random();
+                let m = [...this.state.list,{id:a,action:val,flag:false,isShow:true}];
+                this.setState({
+                    list:m
+                })
+            }
+            changeFlag(index){
+                let m = this.state.list;
+                m[index].flag = !m[index].flag;
+                this.setState({
+                    list:m
+                })
+            }
+            del(val){
+                let m = this.state.list;
+                m.forEach((obj,index) => {
+                    // console.log(obj.id,val);
+                    if(obj.id == val)
+                        m.splice(index,1);
+                });
+                this.setState({
+                    list:m
+                })
+            }
+            render(){
+                return(
+                    <div>
+                        <h1>todolist</h1>
+                        <Search search = {this.search}></Search>
+                        <Add addList = {this.addList}></Add>
+                        <ShowList  list = {this.state.list} del = {this.del} changeFlag = {this.changeFlag}></ShowList>
+                    </div>
+                    // <div></div>
+                )
+            }
+        }
+        class Search extends React.Component{
+            render(){
+                return(     
+                    <div>
+                        <input type="text" ref = {input=>this.myInput = input}/>
+                        <button onClick = {
+                            ()=>{
+                                this.props.search(this.myInput.value);
+                                this.myInput.value = "";
+                            }
+                        }>search</button>
+                    </div>
+                    
+                )
+            }
+        }
+        class Add extends React.Component{
+            constructor(){
+                super();
+                this.fn = this.fn.bind(this);
+            }
+            fn(event){
+                console.log(event.target);
+            }
+            render(){
+                return(
+                    <div>
+                        <input type="text" ref = {input => this.myInput = input} />
+                        <button onClick = {()=>{
+                            if(this.myInput.value !=""){
+                                this.props.addList(this.myInput.value);
+                                this.myInput.value = "" 
+                            }
+                        }}> add</button>   
+                    </div>  
+                )
+            }
+        }
+        class ShowList extends React.Component{
+            render(){
+                return(
+                    // <div>
+                        <ul>
+                            {
+                            this.props.list.map((obj,index)=>{
+                                let a = obj.flag?'red':'';
+                                let b = obj.isShow?'':'aa';
+                                let c = a +" "+ b;
+                                // console.log(c);
+                                return (
+                                    <li key = {obj.id} className = { c}>
+                                        <input type="checkbox" onClick = {
+                                            ()=>{this.props.changeFlag(index)}
+                                        }/>
+                                         {obj.action}
+                                        <button onClick = {
+                                            ()=>{this.props.del(obj.id)}
+                                        }>删除</button>
+                                    </li>
+                                )
+                             })
+                            }   
+                        </ul>
+                    // </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

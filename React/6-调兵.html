@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+    class Father extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                msg:120,
+                // flag:true
+            }
+            this.changeMsg = this.changeMsg.bind(this);
+        }
+        changeMsg(val){
+            if(this.state.msg >0){
+                if((this.state.msg-val) > 0){
+                    this.setState({
+                        msg:this.state.msg-val
+                    })
+                }
+                else{
+                    this.setState({
+                        msg:val
+                        // alert('超出剩余兵力');                 
+                    })
+                }
+            }
+            else{
+                alert('没兵了');
+                this.setState({
+                       
+                })  
+            }
+        }
+        render(){
+            return (
+                <div>
+                    <h1>剩余兵力:{this.state.msg}</h1>
+                    <Son index = "0" changeMsg = {this.changeMsg} flag = {this.state.msg > 0}></Son>
+                    <Son index = "1" changeMsg = {this.changeMsg} flag = {this.state.msg > 0}></Son>
+                </div>
+            )
+        }
+    }
+    class Son extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                sonMsg:[80,120],
+            }
+        }
+        changeSonMsg(index,val){
+            if(this.props.flag == true){
+                    let m = [];
+                if(index == 0){
+                    m = [this.state.sonMsg[index]*1 + val*1,this.state.sonMsg[index+1]]
+                }else{
+                    m = [this.state.sonMsg[index-1],this.state.sonMsg[index]*1 + val*1]
+                }
+                this.setState({
+                    sonMsg:m
+                    // a0:(index == 0)?a0+val:a1+val,
+                })
+            }
+           
+        }
+        render(){
+            return (
+                <div>
+                    <h3>将军{this.props.index*1+1}的兵力为{this.state.sonMsg[this.props.index]}</h3>
+                    <input type="text" placeholder = "请输入调动兵力" ref = {(input)=>this.myInput = input} />
+                    <button onClick = {
+                        ()=>{
+                            // console.log(this.props.index*1);
+                            console.log(this.props.flag);
+                            this.props.changeMsg(this.myInput.value);
+                            this.changeSonMsg(this.props.index*1,this.myInput.value);
+                            this.myInput.value = "";
+                        }
+                    }
+                    >调兵</button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Father></Father>,
+        document.getElementById('root')
+    )
+   </script>
+</body>
+
+</html>
