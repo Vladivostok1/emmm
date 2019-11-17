@@ -1,3 +1,8 @@
+.nav-box{
+    text-align: center;
+    background: #001529;
+    height: 50vw;
+}
 .nav-box img{
     width: 50px;
 }

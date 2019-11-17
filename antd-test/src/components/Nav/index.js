@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import menuList from "../../config/menuconfig";
 import './index.css';
+import {Link} from "react-router-dom";
 const { SubMenu } = Menu;
 
 
@@ -15,13 +16,19 @@ class index extends Component {
     createdMenu = (menuList) => {
         let list = menuList.map((obj, index)=>   {
             if (obj.children) {
-                return (<SubMenu key={obj.path} title = {obj.title}> 
+                return (<SubMenu key={obj.path} title = {
+                    <span><Icon type = {obj.icon}></Icon>
+                    <span>{obj.title}</span>
+                    </span>
+                }> 
                     {
                         this.createdMenu(obj.children)
                     }
                 </SubMenu>)
             }
-            return (<Menu.Item key={obj.path} >{obj.title}</Menu.Item>)
+            return (<Menu.Item key={obj.path} >
+                <Link to = {obj.path}>{obj.title}</Link>
+                </Menu.Item>)
         });
         return list;
     }
