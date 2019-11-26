@@ -1,7 +1,6 @@
-console.log("start");
 
-for (var i = 0; i < 10; i++) {
-    exec(i+1,function(i){
+for(var i = 1;i<=10;i++){
+    exec(i,function(i){
         console.log(i);
     })
 }
@@ -10,4 +9,3 @@ function exec(param,callback){
         callback(param);
     },200)
 }
-console.log("end");
