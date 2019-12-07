@@ -15,12 +15,20 @@ router.get('/reg',User.reg);
 router.post('/reg',User.do_reg);
 router.get('/login',User.login);
 router.post('/login',User.do_login);
+router.get('/unlogin',User.unlogin);
 router.post("/check",User.checkname);
 
 router.get('/index',checklogin);
 router.get('/index',Blog.index);
-router.get('/unlogin',User.unlogin);
-
+//文章相关
+router.get("/newBlog",Blog.add);
+router.post("/newBlog",Blog.do_add);
+//文章分类相关
+router.get('/blogCatalogs',Blog.add_catalog);
+router.post('/addBlogCatalog',Blog.addBlogCatalog);
+router.get("/editCatalog",Blog.editCatalog);
+router.post('/updateCatalog',Blog.updateCatalog);
+router.get('/delCatalog',Blog.delCatalog);
 function checklogin(req,res,next){
   if(req.session.id){
     next();
