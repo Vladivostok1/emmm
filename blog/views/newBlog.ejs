@@ -3,9 +3,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Content-Language" content="zh-CN">
   <title>发表博客 Johnny的博客 - SYSIT个人博客</title>
-      <link rel="stylesheet" href="stylesheets/space2011.css" type="text/css" media="screen">
-  <link rel="stylesheet" type="text/css" href="stylesheets/jquery.css" media="screen">
+      <link rel="stylesheet" href="/stylesheets/space2011.css" type="text/css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.css" media="screen">
   <script type="text/javascript" src="javascripts/jquery-1.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
   <script type="text/javascript" src="javascripts/jquery.js"></script>
   <script type="text/javascript" src="javascripts/jquery_002.js"></script>
   <script type="text/javascript" src="javascripts/oschina.js"></script>
@@ -65,7 +66,7 @@
 <ul>
 	<li class="caption">博客管理	
 		<ol>
-			<li class="current"><a href="/newBlog">发表博客</a></li>
+			<li class="current"><a href="newBlog.htm">发表博客</a></li>
 			<li><a href="/blogCatalogs">博客设置/分类管理</a></li>
 			<li><a href="blogs.htm">文章管理</a></li>
 			<li><a href="blogComments.htm">博客评论管理</a></li>
@@ -83,9 +84,9 @@
 	<td>
     <input name="title" id="f_title" class="TEXT" style="width: 400px;" type="text">
 	存放于 
-	<select name="catalog">
+	<select name="catalog" id="sel">
 	<% catas.forEach(function(cata,index){%>
-	  <option selected="selected" value="<%= cata.CATALOD_ID%>"><%= cata.NAME%></option>
+	  <option selected="selected" value="<%= cata.CATALOG_ID %>"><%= cata.NAME%></option>
 	<% })%>
 		</select>
 	<a href="/blogCatalogs">分类管理»</a>
@@ -98,8 +99,9 @@
 
   <tr>
 
-    <td><textarea name="content" id="editor_id" name="content" style="width:700px;height:300px;"></textarea></td>
+    <td><textarea  id="editor_id" name="newcontent" style="width:700px;height:300px;"></textarea></td>
   </tr>
+
   <tr class="option">
 	<td><strong>文章类型？</strong>
     <input id="blog_type_1" name="type" value="1" onclick="switch_src(this)" checked="checked" type="radio"> <label for="blog_type_1">原创&nbsp;</label>
@@ -125,7 +127,7 @@
   <tr><td>&nbsp;</td></tr>
   <tr class="submit">
 	<td>
-	<input value=" 发 表 " class="BUTTON SUBMIT" type="submit">
+	<input value=" 发 表 " class="BUTTON SUBMIT" type="submit" id="btn">
 	<input name="as_top" value="1" type="checkbox"> 
 	设置为置顶	
     <span id="ajax_processing" style="margin-left:10px;">正在提交，请稍候...</span>
@@ -149,8 +151,12 @@
 <script charset="utf-8" src="/kindeditor/kindeditor-all-min.js"></script>
 <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
 <script>
-        KindEditor.ready(function(K) {
-                window.editor = K.create('#editor_id');
-        });
+		// KindEditor.options.filterMode = true;
+  //       KindEditor.ready(function(K) {
+
+  //               window.editor = K.create('#editor_id');
+  //       });
 </script>
+
+
 </body></html>

@@ -23,6 +23,10 @@ router.get('/index',Blog.index);
 //文章相关
 router.get("/newBlog",Blog.add);
 router.post("/newBlog",Blog.do_add);
+router.get('/search',Blog.do_search);
+
+router.get("/perindex/:cataid",Blog.perindex);
+router.get("/viewPost_logined/:bid",Blog.show_detail_by_page);
 //文章分类相关
 router.get('/blogCatalogs',Blog.add_catalog);
 router.post('/addBlogCatalog',Blog.addBlogCatalog);
